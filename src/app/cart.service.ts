@@ -30,9 +30,9 @@ getcartItems()
   for(const item of this.cartiems)
   {
     this.totalamount+=item.price;
-  }this.
-  sessionStorage.setItem(this.totalamountkey,)
+  }
   return this.totalamount;
+  
 }
 
 

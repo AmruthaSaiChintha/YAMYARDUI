@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../cart.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -8,11 +9,17 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent {
   cartItems: any[] = [];
+  totalAmount:number=0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe((params: { [x: string]: number; }) => {
+      this.totalAmount = params['totalAmount'];
+    });
     this.cartItems = this.cartService.getcartItems();
+    console.log(this.totalAmount);
   }
 
   remove(item: any): void {

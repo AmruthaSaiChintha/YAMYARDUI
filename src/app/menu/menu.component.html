@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .container-fluid {
+            min-height: 100%;
+            position: relative;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #f8f9fa;
+
+        }
+
+        .vl {
+            border-left: 5px solid gray;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+            <div class="container-fluid">
+                <button data-mdb-collapse-init class="navbar-toggler" type="button"
+                    data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15"
+                            alt="MDB Logo" loading="lazy" />
+                    </a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Deals</a>
+                        </li>
+                  </ul>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        
+                        <span class="headerPrice">₹{{ totalAmount }}</span>
+                        <img src="//images.ctfassets.net/wtodlh47qxpt/6qtBVFuno7pdwOQ9RIvYm9/d13e9b7242980972cf49beddde2cc295/bucket_cart_icon.svg"
+                            height="50px" width="40px" 
+                            routerLink="/cart">
+                        <span class="notificationBubble">{{ cartItems.length }}</span> 
+
+                        
+                    </div>
+                    <!-- Avatar -->
+                    &nbsp;
+                    <div class="vl"></div>
+                    <style>
+                        .vl {
+                            border-left: 5px solid gray;
+                            height: 30px;
+                        }
+                    </style>
+                    &nbsp;
+                    &nbsp;
+                    <div class="dropdown">
+                        <img src="https://th.bing.com/th/id/OIP.yOX1_KBsR6fClg3ek8G_ZwHaHx?rs=1&pid=ImgDetMain"
+                            class="rounded-circle" height="32" alt="Black and White Portrait of a Man" loading="lazy"
+                            style="cursor: pointer;" routerLink="/register">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="Categories">
+            <div class="lines">
+                <p>YY MENU</p>
+            </div>
+            <div class="items">
+                <p>Veg</p>
+                <p>Box Meals</p>
+                <p>Sides</p>
+                <p>Snackers @99</p>
+                <p>Chicken Buckets</p>
+                <p>Burgers</p>
+                <p>Chicken Rolls</p>
+                <p>Beverages and Desserts</p>
+            </div>
+        </div>
+        <div class="mainbox">
+            <div class="menu">
+                <div class="menu-group1">
+                    <div class="menu-items-container">
+                        <div *ngFor="let menuitem of menuitems">
+                            <div class="menu-items">
+                                <img src="{{menuitem.imageUrl}}" style="border-radius: 10px;" alt="image" width="230px"
+                                    height="150px">
+                                <p><strong>{{menuitem.name}}</strong></p>
+                                <p>{{menuitem.description}}</p>
+                                <p>₹<strong>{{menuitem.price}}</strong></p>
+
+                                <div class="addbutton">
+                                    <button [disabled]="!menuitem.isAvailable || menuitem.quantity==0"
+                                        [ngStyle]="{'background-color': (!menuitem.isAvailable || menuitem.quantity==0) ? 'gray' : ''}"
+                                        (click)="addToCart(menuitem)">
+                                        Add to Cart
+                                        <img class="image" src="assets\add-to-cart (1).png" alt="addtocart" width="20px"
+                                            height="20px">
+                                    </button>
+                                    <p *ngIf="!menuitem.isAvailable || menuitem.quantity==0" style="color: red;">Out of
+                                        Stock</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+&nbsp;
+<app-footer></app-footer>

@@ -1,0 +1,100 @@
+.cart{
+    font-weight: bold;
+    font-size: 30px;
+    padding-left: 110px;
+    padding-top: 20px;
+    font-family: "National 2 Condensed";
+    font-style: normal;
+    font-weight: 700;
+   
+}
+.card
+{
+    width:600px;
+    margin-top: 30px;
+    margin-left: 10px;
+    background-color:#f8f7f5;
+    font-family: "National 2 Regular";
+    font-style: normal;
+    font-weight: 500;  
+    display: flex;
+    flex-direction: row;
+
+}
+.imgurl
+{
+    margin-top: 10px;
+    margin-left: 7px;
+    margin-right: 10px;
+    align-self: flex-start;
+}
+.cartitems
+{
+    margin-left: 100px;
+    margin-top: 20px;
+  
+}
+.item-details
+{
+    margin-left: 30px;
+    margin-top:30px;
+}
+.buttoncls {
+    padding: 6px 12px; 
+    border: none; 
+    margin-bottom: 5px;
+}
+.quantity-input {
+    border: none; 
+    background: none; 
+    outline: none; 
+    width:30px; 
+}
+
+
+.buttoncls:hover {
+    background-color: #c82333;}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn rounded-circle {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px 10px;
+    width: 20px;
+    height: 20px;
+   align-items: center;
+}
+
+
+.buttoncls {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.buttoncls:hover {
+    background-color: #c82333;
+}
+
+.round-btn {
+    border-radius: 50%;
+    width: 30px; 
+    height: 30px; 
+}
+
+element.style {
+    width: 30px;
+    height: 20px;
+}

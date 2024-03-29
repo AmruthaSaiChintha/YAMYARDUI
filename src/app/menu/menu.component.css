@@ -1,0 +1,70 @@
+.container
+{
+    display: flex;
+    align-items: flex-start;
+}
+.Categories {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.lines
+{
+    font-weight: bold;
+    
+}
+.items p{
+    margin-left: 10px;
+    font-size: 14px;
+    width: 120px
+}
+.mainbox {
+    margin-left: 30px; 
+    margin-top: 30px; 
+    
+ 
+}
+.menu-items-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    gap: 30px; 
+    margin-left: 100px;
+}
+
+.menu-items {
+    width: 250px; 
+    border-radius: 8px;
+    padding: 10px;
+    height:390px;
+    box-shadow: 0 4px 7px rgba(0,0,0,.1);
+    border-radius: 8px;
+  
+}
+.addbutton button
+{
+    
+    font-size: 14px;
+    padding: 3px 3px;
+    border-radius: 15px;
+    background-color: #e4002b;
+    border: 1px solid #e4002b;
+    color: #fff;
+    padding: 5px 10px 5px 10px;
+}
+.addbutton
+{
+    align-items: center;
+    text-align: center;
+}
+.notificationBubble
+{
+    position: absolute;
+    top: -1px;
+    right: 0;
+    background-color: #a62323;
+    color: white;
+    border-radius: 41%;
+    padding: 1px 3px 1px 3px;
+    font-size: 9px;
+}
+

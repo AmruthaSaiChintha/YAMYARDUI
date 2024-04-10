@@ -41,7 +41,8 @@ export class MenuComponent implements OnInit {
     this.cartItems=this.cartservice.getcartItems();
   }
   navigate(): void {
-    this.router.navigate(['/cart'],
-    {queryParams:{totalAmount:this.totalAmount}})
+    const totalAmount = this.cartservice.calculateprice();
+    this.router.navigate(['/cart'], { queryParams: { totalAmount } });
   }
+  
 }

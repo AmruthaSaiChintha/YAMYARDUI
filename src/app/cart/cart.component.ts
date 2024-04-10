@@ -14,14 +14,15 @@ export class CartComponent {
   constructor(private cartService: CartService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-
-    this.route.queryParams.subscribe((params: { [x: string]: number; }) => {
+    this.route.queryParams.subscribe(params => {
+      console.log('Query Params:', params);
       this.totalAmount = params['totalAmount'];
+      console.log('Total Amount:', this.totalAmount);
     });
     this.cartItems = this.cartService.getcartItems();
-    console.log(this.totalAmount);
   }
-
+  
+  
   remove(item: any): void {
     this.cartService.removefromcart(item);
     this.cartItems = this.cartService.getcartItems();

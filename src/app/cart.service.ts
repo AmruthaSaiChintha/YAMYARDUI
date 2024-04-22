@@ -7,7 +7,9 @@ export class CartService {
   public cartiems:any[]=[];
   private cartitemkey='cartiems';
   private totalamountkey='totalamount';
+  private lengthkey='length';
   totalamount:number=0;
+  lengthcal:number=0;
 
   constructor() {
    const storedcartitems=sessionStorage.getItem(this.cartitemkey)
@@ -16,8 +18,10 @@ export class CartService {
     this.cartiems=JSON.parse(storedcartitems)
    }
    }
+  
  addToCart(menuitem:any)
  {
+  menuitem.quantity=1;
   this.cartiems.push(menuitem);
   this.savecartitems();
 }
@@ -31,10 +35,18 @@ getcartItems()
   {
     this.totalamount+=item.price;
   }
-  return this.totalamount;
-  
+  sessionStorage.setItem(this.totalamountkey, JSON.stringify(this.totalamount));
+  return this.totalamount; 
 }
-
+gettingtotalamout():number
+{
+  const storedTotalAmount=sessionStorage.getItem(this.totalamountkey);
+  if(storedTotalAmount)
+  {
+    this.totalamount=JSON.parse(storedTotalAmount);
+  }
+  return this.totalamount;
+}
 
 private savecartitems()
 {
@@ -49,4 +61,10 @@ removefromcart(menuitem:any)
     this.savecartitems();
   }
 }
+getlength():number{
+  this.lengthcal=this.cartiems.reduce((total,item)=>total+item.quantity,0);
+  sessionStorage.setItem(this.lengthkey,JSON.stringify(this.lengthcal));
+ 
+  return this.lengthcal;
+ }
 }

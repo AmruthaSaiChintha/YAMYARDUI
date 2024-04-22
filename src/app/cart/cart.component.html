@@ -11,16 +11,16 @@
         html,
         body {
             height: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
+        margin: 0;
+        padding: 0;
+        position: relative;
         }
 
         .container-fluid {
             min-height: 100%;
-            position: relative;
-            padding-left: 0; /* Remove left padding */
-            padding-right: 0; /* Remove right padding */
+        position: relative;
+        padding-left: 0; /* Remove left padding */
+        padding-right: 0;
         }
 
         .navbar {
@@ -33,12 +33,12 @@
         }
 
         .navbar-brand {
-            margin-left: 150px; /* Adjust margin to move logo slightly to the left */
-        }
+            margin-left: 150px;
 
+        }
         .nav-link {
             margin-left: 20px;
-            font-weight: bold;
+        font-weight: bold;
         }
 
         .vl {
@@ -47,10 +47,11 @@
 
         .navbar-second {
             background-color: black; /* Black background color for second navbar */
-            color: white; /* White text color */
-            width: 100%;
-            height: 40px;
+        color: white; /* White text color */
+        width: 100%;
+        height: 40px;
         }
+      
     </style>
 </head>
 
@@ -111,27 +112,52 @@
 </html>
 
 <div class="maincart">
+<div  class="row">
+  <div class="col-md-6">
     <div class="cartitems">
         <div *ngFor="let item of cartItems" class="card">
         
             <img src="{{item.imageUrl}}" class="imgurl" style="border-radius: 10px;" alt="image" width="90px" height="90px">
             <div class="item-details">
                 <p>{{item.name}}</p>
+               
+       
                 <button class="buttoncls" type="button" (click)="remove(item)">Remove</button>
                       &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;
                 <button class="quantity-btn round-btn" (click)="decreaseQuantity(item)">-</button>
                 <input  type="number" [(ngModel)]="item.quantity" class="quantity-input">
-                <button class="quantity-btn round-btn" (click)="increaseQuantity(item)">+</button>
-         
+                <button class="quantity-btn round-btn" (click)="increaseQuantity(item)">+</button> 
+                   <div class="price">
+                    <p>₹{{item.price}}</p>
+                </div>
             </div>
-          
         </div>
-        <div class="totalamount">
-            <p>Total Amount: {{ totalAmount }}</p>
+       
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="cartitems1">
+        <div class="card">
+            <div class="cart-offers-link">
+               
+                <div class="subtotal-wrapper">
+                    <p class="SubTotal">
+                        Sub Total:&nbsp;&nbsp;&nbsp;&nbsp; {{ totalamount }}
+                        <br>      
+                        Total Quantity:&nbsp;&nbsp;&nbsp;&nbsp;{{totalquantity}}
+                    </p>
+                    <hr class="new">
+                </div>
+    
+       
+    </div>
           </div>
-          
     </div>
 </div>
+</div>
+</div>
+
+
 
 
 

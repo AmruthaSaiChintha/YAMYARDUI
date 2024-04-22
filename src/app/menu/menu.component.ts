@@ -42,7 +42,9 @@ export class MenuComponent implements OnInit {
   }
   navigate(): void {
     const totalAmount = this.cartservice.calculateprice();
-    this.router.navigate(['/cart'], { queryParams: { totalAmount } });
+    
+    this.router.navigate(['/cart']);
+    
   }
   
 }

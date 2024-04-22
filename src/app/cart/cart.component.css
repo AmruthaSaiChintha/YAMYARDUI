@@ -11,7 +11,7 @@
 .card
 {
     width:500px;
-    height: 120px;
+    height: 140px;
     margin-top: 30px;
     margin-left: 10px;
     background-color:#f8f7f5;
@@ -44,6 +44,14 @@
     margin-left: 100px;
     margin-top: 20px;
   
+}
+.cartitems1
+{
+    margin-left: 50px;
+    margin-top: 30px;
+    box-shadow: 20px;  
+    width: 200px;
+    height: 1000px;
 }
 .item-details
 {
@@ -122,4 +130,75 @@
 element.style {
     width: 30px;
     height: 20px;
+}
+.price
+{
+    display: flex;
+    margin-left: 300px;
+    margin-top: 2px;
+}
+
+.cartitems1 .card{
+    margin-left: 30px;
+    max-width: 350px;
+   height: 300px;
+   background-color: white;
+   box-shadow: 0 4px 9px rgba(0,0,0,.15);
+    border-radius: 10px;
+
+}
+.col-md-6
+{
+    background-color: white;
+    border-radius: 20px;
+}
+
+.cart-offers-link
+{
+    width: 100%;
+    height: 50px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUAAAAA0CAYAAAD7VOHJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAJbSURBVHgB7d3PcdpAFIDx9wQWks0hdEA6gA6SChJXkHSSdJBJBXYqsFOB6cDuIHQgH0TEX21YxpOxQVrOq/f9TkKr8ze70iLpslo4AQCDEgEAowggALMIIACzCCAAswggALMIIACzCCAAswggALMIIACzCCAAswggALMIIACzEle7XwIAxqjIrfqDqqrGKvXD/nAsANBt8+3OXQ+Hw6fDEjjP83m1XE9F9V4AoKP8ineQXU59/PxvPb6gWpS3mugXAYAucXKfXV5dvz51EsCiKN7lWfooLIcBdMfcz/xU9fn1SW26sizLSb+njwIAHeAkee9v9R2fb9wG49fHtat/CgBEzj/tbYrfy1izl6VwIQAQsbbZn9e6EXo0Gu3XyjoTAIiWztri5wX/CbJfBv8WAIjVmYYFA9jvy0wAIFJu555C48EALhabuQBApLLhNhhAlTP4cDqAWGX5VbBxvA0GgFnBAPqtMAIAkXIu3LBgALOsPxEAiNRmczEOjQcD6JwSQADRqrfyITQeDGCiyScBgFidaVjrE5KqKsYq6R8BgIgNsvVIdfTcNNY+A6wvvgsARG5VDb61jTXOAJn9AeiSpOemaTo82RR9MgP0j4338XsQAOiIeqd3TVtiTgK4qtIb4W3QALplvF6mP45P/g+gr+OqWtzsF8WfBQA6xol8XS3/vpkJHu4BlmUx6ffSO2HmB6D75k7WH/N8NFe+AgfAosOH0XnbCwCreBsMALMIIACzCCAAswggALMIIACzCCAAswggALMIIACzCCAAswggALMIIACzCCAAs/4BsqmdodGkXAsAAAAASUVORK5CYII=);
+    background-size: contain;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+
+}
+.totalamount
+{
+    margin-top: 70px;
+    margin-left: 2px;
+}
+.percent
+{
+    margin-left: 20px;
+}
+.SubTotal
+{
+    display: flex;
+    margin-top: 150px;
+    margin-left: 70px;
+    font-weight:500;
+}
+
+.image
+{
+    margin-left: 60px;
+}
+.new
+{
+ margin-left: 20px;
+ margin-top: 30px;
+ width: 250px;
+
+}
+.mycheckbox
+{
+
+ text-align: center;
+ margin-left: 120px;
 }

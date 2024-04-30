@@ -1,77 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
   cartItems: any[] = [];
-  totalamount:number=0;
-  finalamount:number=0;
-  totalquantity:number=0;
-
-  constructor(private cartService: CartService,private route:ActivatedRoute) { }
+  totalamountvalue:number=0;
+  lengthcalculator:number=0;
+  subtotal:number=0;
+  
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      console.log('Query Params:', params);
+    this.cartItems = this.cartService.getcartItems().map(item => ({ ...item }));
+    // this.totalamountvalue = this.cartService.gettingtotalamout();
+    this.cartItems.forEach(item => {
+      if (item.quantity === undefined || item.quantity === null || item.quantity <= 0) {
+        item.quantity = 1;
+      }
     });
-    this.cartItems = this.cartService.getcartItems();
-    this.totalamount=this.cartService.gettingtotalamout();
   }
-  
- 
-  
-  remove(item: any): void 
-  {
-    this.cartService.removefromcart(item);
-    this.cartItems = this.cartService.getcartItems();
-    this.totalamount=this.cartService.gettingtotalamout();
+
+  increaseQuantity(item: any) {
+    item.quantity++;
+    item.price=item.price*item.quantity;
+    // this.totalamountvalue=this.incresesubtotal();
     
-  
   }
 
-  addMoreQuantity(item: any): void {
-    const index = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
-    if (index !== -1) {
-      this.cartItems[index].quantity++;
-      this.cartService.cartiems = this.cartItems;
-      this.updatesubtotal();
-      
-    }
-  }
-
-
-  updatesubtotal():void
-  {
-
-    this.totalamount=this.cartItems.reduce((total,item)=>total+(item.price*item.quantity), 0);
-    this.totalquantity=this.cartItems.reduce((total,item)=>total+item.quantity,0);
-  
-
-
-
-
-  }
-
-  decreaseQuantity(item: any): void {
+  decreaseQuantity(item: any) {
     if (item.quantity > 1) {
       item.quantity--;
-      item.price/=2;
-      this.cartService.cartiems = this.cartItems;
-      this.updatesubtotal();
-    
+      item.price=item.price/(item.quantity+1);
+      // this.totalamountvalue=this.incresesubtotal();
     }
   }
+  incresesubtotal()
+  {
+    
+    let value=0;
+    this.cartItems.forEach(element => {
+      value=value+element.price;
 
-  increaseQuantity(item: any): void {
-    item.quantity++;
-    item.price*=2;
-    this.cartService.cartiems = this.cartItems;
-    this.updatesubtotal();
- 
+      
+    });
+    return value;
+    
+  }
+
+  removeItem(item: any) {
+    this.cartService.removefromcart(item);
+    this.cartItems = this.cartService.getcartItems();
   }
 }

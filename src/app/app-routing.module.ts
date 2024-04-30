@@ -8,6 +8,7 @@ import { ContentPageComponent } from './content-page/content-page.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"contentpage",component:ContentPageComponent},
   {path:"register",component:RegisterComponent},
   {path:"menu",component:MenuComponent},
-  {path:"cart",component:CartComponent}
+  {path:"cart",component:CartComponent},
+  {path:"add-to-cart",component:AddToCartComponent}
  
 
 ];

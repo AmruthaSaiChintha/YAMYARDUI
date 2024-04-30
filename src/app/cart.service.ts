@@ -11,6 +11,7 @@ export class CartService {
   totalamount:number=0;
   lengthcal:number=0;
 
+
   constructor() {
    const storedcartitems=sessionStorage.getItem(this.cartitemkey)
    if(storedcartitems)
@@ -18,37 +19,46 @@ export class CartService {
     this.cartiems=JSON.parse(storedcartitems)
    }
    }
+   addToCart(menuitem: any) {
+    const existingItemIndex = this.cartiems.findIndex(item => item.id === menuitem.id);
+    if (existingItemIndex !== -1) {
+      this.cartiems[existingItemIndex].quantity++;
+    } else {
+      menuitem.quantity = 1;
+      this.cartiems.push(menuitem);
+    }
+    this.savecartitems();
+  }
   
- addToCart(menuitem:any)
- {
-  menuitem.quantity=1;
-  this.cartiems.push(menuitem);
-  this.savecartitems();
-}
+  
+  
+  removeItem(menuitem: any) {
+    const index = this.cartiems.findIndex(item => item.id === menuitem.id);
+    if (index !== -1) {
+      this.cartiems.splice(index, 1);
+      this.savecartitems();
+    }
+  }
+  
+  
 getcartItems()
  {
+  
    return this.cartiems;
+   
  }
  calculateprice(): number {
-  this.totalamount=0
-  for(const item of this.cartiems)
-  {
-    this.totalamount+=item.price;
+  this.totalamount = 0;
+  for (const item of this.cartiems) {
+    this.totalamount += item.price * item.quantity; // Update to multiply by quantity
   }
-  sessionStorage.setItem(this.totalamountkey, JSON.stringify(this.totalamount));
-  return this.totalamount; 
-}
-gettingtotalamout():number
-{
-  const storedTotalAmount=sessionStorage.getItem(this.totalamountkey);
-  if(storedTotalAmount)
-  {
-    this.totalamount=JSON.parse(storedTotalAmount);
-  }
+  // sessionStorage.setItem(this.totalamountkey, JSON.stringify(this.totalamount));
+
   return this.totalamount;
 }
 
-private savecartitems()
+
+public savecartitems()
 {
   sessionStorage.setItem(this.cartitemkey, JSON.stringify(this.cartiems));
 }
@@ -61,10 +71,14 @@ removefromcart(menuitem:any)
     this.savecartitems();
   }
 }
-getlength():number{
-  this.lengthcal=this.cartiems.reduce((total,item)=>total+item.quantity,0);
-  sessionStorage.setItem(this.lengthkey,JSON.stringify(this.lengthcal));
- 
-  return this.lengthcal;
- }
+
+gettingtotalamout()
+{
+  // const storedtotalamount=sessionStorage.getItem(this.totalamountkey)
+  // if(storedtotalamount)
+  // {
+  //   this.totalamount=JSON.parse(storedtotalamount)
+  // }
+  // return this.totalamount;
+}
 }

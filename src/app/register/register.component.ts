@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ɵflushModuleScopingQueueAsMuchAsPossible } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   private userposturl="https://localhost:44387/api/Users";
  
   registermodel!:FormGroup;
-  constructor(private http:HttpClient,private fb:FormBuilder) { }
+  constructor(private http:HttpClient,private fb:FormBuilder,private router:Router) { }
 
 
   postuser(data:any):Observable<any>
@@ -93,6 +93,7 @@ myformlogin()
     {
       console.log('response:', response);
     })
+   this.router.navigateByUrl("/menu")
 }
 
 }

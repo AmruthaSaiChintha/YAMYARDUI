@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
+import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { CartComponent } from './cart/cart.component';
     LoginComponent,
     MenuComponent,
     CartComponent,
+    AddToCartComponent,
 
   ],
   imports: [

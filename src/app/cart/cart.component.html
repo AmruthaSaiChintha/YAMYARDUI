@@ -116,24 +116,28 @@
   <div class="col-md-6">
     <div class="cartitems">
         <div *ngFor="let item of cartItems" class="card">
-        
-            <img src="{{item.imageUrl}}" class="imgurl" style="border-radius: 10px;" alt="image" width="90px" height="90px">
+            <img src="{{ item.imageUrl }}" class="imgurl" style="border-radius: 10px;" alt="image" width="90px" height="90px">
             <div class="item-details">
-                <p>{{item.name}}</p>
-               
-       
-                <button class="buttoncls" type="button" (click)="remove(item)">Remove</button>
-                      &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;           &nbsp;&nbsp;
-                <button class="quantity-btn round-btn" (click)="decreaseQuantity(item)">-</button>
-                <input  type="number" [(ngModel)]="item.quantity" class="quantity-input">
-                <button class="quantity-btn round-btn" (click)="increaseQuantity(item)">+</button> 
-                   <div class="price">
-                    <p>₹{{item.price}}</p>
-                </div>
+                <p>{{ item.name }}</p>
+                <p>Price:
+                    ₹{{ item.price }}</p>
+                    <div class="quantity-remove">
+                        <button class="buttoncls" type="button" (click)="removeItem(item)">Remove</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;     
+                        <p>Quantity: 
+                            <button class="quantity-btn round-btn" (click)="decreaseQuantity(item)">-</button>
+                           
+                            <span  class="quantity">{{ item.quantity }}</span> 
+                            
+                            <button class="quantity-btn round-btn" (click)="increaseQuantity(item)">+</button>
+                        </p>
+                    </div>
             </div>
+  
+    
         </div>
-       
     </div>
+    
   </div>
   <div class="col-md-6">
     <div class="cartitems1">
@@ -142,11 +146,16 @@
                
                 <div class="subtotal-wrapper">
                     <p class="SubTotal">
-                        Sub Total:&nbsp;&nbsp;&nbsp;&nbsp; {{ totalamount }}
+                        Sub Total:&nbsp;&nbsp;&nbsp;&nbsp; {{ totalamountvalue }}
                         <br>      
-                        Total Quantity:&nbsp;&nbsp;&nbsp;&nbsp;{{totalquantity}}
+                        Total Quantity:&nbsp;&nbsp;&nbsp;&nbsp;{{lengthcalculator}}
+
                     </p>
                     <hr class="new">
+                    <label>
+                        <input type="checkbox" class="mycheckbox"> ₹6.00 Tick to add a large carry bag
+                    </label>
+                    <button class="button redButton cart-summary-checkout-button" role="button" aria-label="Close" data-testid="navigation-checkout-desktop"><span>Checkout</span><span>₹1412.02</span></button>
                 </div>
     
        

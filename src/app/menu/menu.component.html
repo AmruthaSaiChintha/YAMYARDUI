@@ -145,13 +145,13 @@
                                 <p>₹<strong>{{menuitem.price}}</strong></p>
                                 <div class="addbutton">
                                     <button [disabled]="!menuitem.isAvailable || menuitem.quantity==0"
-                                        [ngStyle]="{'background-color': (!menuitem.isAvailable || menuitem.quantity==0) ? 'gray' : ''}"
+                                        [ngStyle]="{'background-color': (menuitem.isAvailable==false) ? 'gray' : ''}"
                                         (click)="addToCart(menuitem)">
                                         Add to Cart
                                         <img class="image" src="assets\add-to-cart (1).png" alt="addtocart" width="20px"
                                             height="20px">
                                     </button>
-                                    <p *ngIf="!menuitem.isAvailable && menuitem.quantity==0" style="color: red;">Out of
+                                    <p *ngIf="menuitem.isAvailable==false">Out of
                                         Stock</p>
                                 </div>
                             </div>

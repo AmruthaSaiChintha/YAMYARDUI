@@ -20,15 +20,28 @@ export class CartService {
    }
    }
    addToCart(menuitem: any) {
-    const existingItemIndex = this.cartiems.findIndex(item => item.id === menuitem.id);
+    
+    console.log("Existing Cart Items:", this.cartiems);
+    console.log("Menu Item Being Added:", menuitem);
+    
+    const existingItemIndex = this.cartiems.findIndex(item => item.itemID === menuitem.itemID);
     if (existingItemIndex !== -1) {
-      this.cartiems[existingItemIndex].quantity++;
+        console.log("Existing Item Found at Index:", existingItemIndex);
+        // Update quantity of existing item
+        this.cartiems[existingItemIndex].quantity++;
     } else {
-      menuitem.quantity = 1;
-      this.cartiems.push(menuitem);
+        console.log("New Item Being Added");
+        const newItem = { ...menuitem, quantity: 1, cartItemId: this.generateUniqueId() }; // Create a new item with unique identifier
+        this.cartiems.push(newItem); // Add new item to cart
     }
+    console.log("Updated Cart Items:", this.cartiems);
     this.savecartitems();
-  }
+}
+ 
+private generateUniqueId(): string {
+  return Math.random().toString(36).substr(2, 9); // Generate a random unique ID
+}
+
   
   
   
@@ -41,12 +54,14 @@ export class CartService {
   }
   
   
-getcartItems()
- {
-  
-   return this.cartiems;
-   
+  getcartItems() {
+    const storedcartitems = sessionStorage.getItem(this.cartitemkey);
+    if (storedcartitems) {
+       this.cartiems = JSON.parse(storedcartitems);
+    }
+    return this.cartiems;
  }
+ 
  calculateprice(): number {
   this.totalamount = 0;
   for (const item of this.cartiems) {

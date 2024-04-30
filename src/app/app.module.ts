@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { CartComponent } from './cart/cart.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
     MenuComponent,
     CartComponent,
     AddToCartComponent,
+    PaymentComponent,
 
   ],
   imports: [
